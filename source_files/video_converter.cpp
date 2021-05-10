@@ -8,9 +8,9 @@ int VideoConverter::changeSpaceColor(int slider){
 
     switch (slider){
     case 0:
-        // RGB
-        cout << "cambiando a RGB..." << endl;
-        space_color = COLOR_BGR2RGB;
+        //Gray
+        cout << "cambiando a Escala de Grises..." << endl;
+        space_color = COLOR_BGR2GRAY;
         break;
     case 1:
         // HSV
@@ -27,11 +27,8 @@ int VideoConverter::changeSpaceColor(int slider){
         cout << "cambiando a YCrCb..." << endl;
         space_color = COLOR_BGR2YCrCb;
         break;
-    case 4:
-        //Gray
-        cout << "cambiando a Escala de Grises..." << endl;
-        space_color = COLOR_BGR2GRAY;
     default:
+        space_color = COLOR_BGR2GRAY;
         break;
     }
 

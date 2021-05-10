@@ -4,7 +4,7 @@ Mat frame;
 Mat newFrame;
 VideoConverter converter;
 
-const int MAX_SPACE_COLOR = 4;
+const int MAX_SPACE_COLOR = 3;
 int slider = 0;
 int spaceColor;
 
@@ -24,16 +24,14 @@ int main(int, char**) {
     if(video.isOpened()){
         namedWindow("Video Original", WINDOW_AUTOSIZE);
         namedWindow("Video Nuevo", WINDOW_AUTOSIZE);
+        
+        createTrackbar("Colorspace", "Video Original", &slider, MAX_SPACE_COLOR, onTrackbar);
+        spaceColor = converter.changeSpaceColor(slider);
 
         while(3==3){
             video >> frame;
             flip(frame, frame, 1);
-
-            if(newFrame.empty()){
-                newFrame = frame.clone();
-            }
             
-            createTrackbar("Colorspace", "Video Original", &slider, MAX_SPACE_COLOR, onTrackbar);
             cvtColor(frame, newFrame, spaceColor);
             imshow("Video Original", frame);
             imshow("Video Nuevo", newFrame);
